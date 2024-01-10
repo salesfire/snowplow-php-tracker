@@ -313,7 +313,7 @@ class Tracker extends Constants {
      * @param array|null $context - Event Context
      * @param int|null $timestamp_in_ms - Event Timestamp in milliseconds
      */
-    private function trackEcommerceTransactionItems($order_id, $sku, $price, $quantity, $name = NULL, $category = NULL,
+    public function trackEcommerceTransactionItems($order_id, $sku, $price, $quantity, $name = NULL, $category = NULL,
                                                     $currency = NULL, $context = NULL, $timestamp_in_ms = NULL) {
         $ep = new Payload($timestamp_in_ms);
         $ep->add("e", "ti");
