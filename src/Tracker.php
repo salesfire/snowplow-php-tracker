@@ -295,13 +295,13 @@ class Tracker extends Constants {
         // Go through each item in the transaction and create an event for it.
 
         foreach ($items as $item) {
-            $this->trackEcommerceTransactionItems($order_id, $item["sku"], $item["price"], $item["quantity"],
+            $this->trackEcommerceTransactionItem($order_id, $item["sku"], $item["price"], $item["quantity"],
                 $item["name"], $item["category"], $currency, $context, $timestamp_in_ms);
         }
     }
 
     /**
-     * Creates an event for each item in the ecommerceTransaction item array
+     * Tracks an ecommerce transaction item event
      *
      * @param string $order_id - Order ID inherited from trackEcommerceTransaction
      * @param string $sku - Product SKU, identity of the product
@@ -313,7 +313,7 @@ class Tracker extends Constants {
      * @param array|null $context - Event Context
      * @param int|null $timestamp_in_ms - Event Timestamp in milliseconds
      */
-    public function trackEcommerceTransactionItems($order_id, $sku, $price, $quantity, $name = NULL, $category = NULL,
+    public function trackEcommerceTransactionItem($order_id, $sku, $price, $quantity, $name = NULL, $category = NULL,
                                                     $currency = NULL, $context = NULL, $timestamp_in_ms = NULL) {
         $ep = new Payload($timestamp_in_ms);
         $ep->add("e", "ti");
